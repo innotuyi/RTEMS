@@ -1,0 +1,222 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #4A3F99;
+    color: white;
+    position: fixed;
+    height: 100%;
+    padding: 15px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 10px 0;  /* Reduced margin between links */
+    display: flex;
+    align-items: center;
+}
+
+/* Sidebar Links */
+.sidebar li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;  /* Adjusted padding */
+    transition: all 0.3s ease;
+}
+
+/* Icon Spacing */
+.sidebar li a i {
+    margin-right: 10px;
+}
+
+/* Hover Effect for Links */
+.sidebar li a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar li a:hover::before {
+    width: 100%;
+}
+
+.sidebar li a:hover {
+    color: #f9f9f9;
+    padding-bottom: 5px; /* Optional padding to create space for the border */
+}
+
+/* Add a slight shadow to the link to make it stand out */
+.sidebar li a:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* Active Link */
+.sidebar li a.active {
+    color: #3498db;
+    font-weight: 700;
+}
+
+/* Main Content Styling */
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+    flex: 1;
+    background-color: #ffffff;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+/* Header Section */
+.header {
+    background-color: #4A3F99;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #372f77;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 18px;
+}
+
+/* Content Area */
+.content {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #4A3F99;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table .actions a {
+    margin-right: 10px;
+    color: #4A3F99;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.table .actions a:hover {
+    border-color: #4A3F99;
+    background-color: #f4f4f9;
+}
+
+.table .actions a.delete {
+    color: red;
+}
+
+.table .actions a.delete:hover {
+    background-color: #ffe6e6;
+    border-color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        padding: 10px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .sidebar li {
+        margin: 5px 0;  /* Further reduce margin on small screens */
+    }
+
+    .sidebar li a {
+        font-size: 14px;  /* Adjust font size */
+        padding: 8px 10px;  /* Adjust padding for smaller screens */
+    }
+
+    .header h1 {
+        font-size: 24px;  /* Adjust header font size for small screens */
+    }
+
+    .table th, .table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

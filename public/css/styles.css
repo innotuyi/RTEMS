@@ -1,0 +1,240 @@
+/* Body font and header font */
+body {
+    font-family: 'Open Sans', sans-serif; /* Body font */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Header font */
+}
+
+/* Sticky Navbar */
+.navbar {
+    position: sticky;
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  }
+  
+  /* Optional: Reduce padding when the user scrolls */
+  .navbar.scrolled {
+    padding: 5px 0;
+    transition: padding 0.3s ease;
+  }
+  
+
+/* Navigation and icons */
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+.icon-link {
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand img {
+    max-width: 100%; /* Ensure image doesn't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Avoid extra white space below the image */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    background-color: #ffffff;
+  }
+  
+  .navbar-brand img:hover {
+    transform: scale(1.05); /* Slight zoom-in on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+  @media (max-width: 768px) {
+    .navbar-brand img {
+      width: 140px; /* Smaller width for small screens */
+    }
+  }
+    
+
+
+.icon-link:hover {
+    color: #4CAF50; /* Change color on hover */
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    border-radius: 10px; /* Smooth corners */
+    background-color: #000; /* Black background for better contrast */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px; /* Match container's rounded corners */
+}
+
+
+/* Button Hover Effects */
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.fade-in-visible {
+    opacity: 1;
+}
+
+/* Newsletter Section */
+.newsletter {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styling */
+footer {
+    background-color: purple;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: #67B7D1;
+}
+
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer .container p {
+    margin: 0;
+}
+
+footer .container a {
+    color: white;
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+footer .container a:hover {
+    color: #4CAF50; /* Green on hover */
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px; /* Distance from the bottom of the viewport */
+    right: 30px; /* Distance from the right of the viewport */
+    display: none; /* Initially hidden */
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* Ensure the icon is visible */
+    border: none; /* Remove default border */
+    border-radius: 50%; /* Make it a circular button */
+    padding: 12px 16px; /* Add spacing */
+    font-size: 20px; /* Adjust icon size */
+    cursor: pointer; /* Show pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    z-index: 1000; /* Ensure it stays above other elements */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+  }
+  
+  #back-to-top:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  }
+  
+  #back-to-top:active {
+    transform: translateY(2px); /* Subtle press effect */
+  }
+  
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .newsletter {
+        text-align: center;
+    }
+}
