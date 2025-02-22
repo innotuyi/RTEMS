@@ -21,19 +21,18 @@
     <div class="dashboard-container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2>RYFPL Admin</h2>
+            <h2>RTEMS Admin</h2>
             <ul>
                 {{-- <li><a href="{{ route('admin.pages.index') }}"><i class="fas fa-file-alt"></i> Manage Pages</a></li> --}}
-                <li><a href="{{ route('admin.blogs.index') }}"><i class="fas fa-file-alt"></i> Manage Blog</a></li>
-                <li><a href="{{ route('admin.team.index') }}"><i class="fas fa-users"></i> Manage Team</a></li>
-                <li><a href="{{ route('admin.programs.index') }}"><i class="fas fa-building"></i> Manage Programs</a></li>
-                <li><a href="{{ route('admin.contact.index') }}"><i class="fas fa-building"></i> Manage Contact</a></li>
-                <li><a href="{{ route('admin.resources.index') }}"><i class="fas fa-building"></i> Manage Resources</a></li>
-                <li><a href="{{ route('users.index') }}"><i class="fas fa-hand-holding-heart"></i>Manage User</a></li>
-                <li><a href="{{ route('admin.newsletter.index') }}"><i class="fas fa-hand-holding-heart"></i>Manage subscriber</a></li>
-
-                <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Donation Settings</a></li>
-                <li><a href="{{ route('logout') }}"><i class="fas fa-hand-holding-heart"></i>Logout</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Bids Management</a></li>
+                <li><a href="#"><i class="fas fa-users"></i>Applications</a></li>
+                <li><a href="#"><i class="fas fa-building"></i>Regulatory Approvals</a></li>
+                <li><a href="#"><i class="fas fa-building"></i> Manage Companies</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Manage User</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Regulatory Approvals</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Notifications</a></li>
+                <li><a href="#"><i class="fas fa-building"></i> Manage Contact</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Logout</a></li>
 
                 {{-- <li><a href="{{ route('analytics') }}"><i class="fas fa-chart-line"></i> View Analytics</a></li> --}}
             </ul>

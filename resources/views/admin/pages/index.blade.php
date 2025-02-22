@@ -7,32 +7,32 @@
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Total Users</h5>
-                    <p class="card-text display-4">{{ $totalUsers }}</p>
+                    <h5 class="card-title">Total Bids</h5>
+                    <p class="card-text display-4">{{ $totalBids }}</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Total Blogs</h5>
-                    <p class="card-text display-4">{{ $totalBlogs }}</p>
+                    <h5 class="card-title">Total Bid Applications</h5>
+                    <p class="card-text display-4">{{ $totalBidApplications }}</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Total Programs</h5>
-                    <p class="card-text display-4">{{ $totalPrograms }}</p>
+                    <h5 class="card-title">Total Regulatory Approvals</h5>
+                    <p class="card-text display-4">{{ $totalRegulatoryApprovals }}</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card shadow h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Total Contacts</h5>
-                    <p class="card-text display-4">{{ $totalContacts }}</p>
+                    <h5 class="card-title">Total Notifications</h5>
+                    <p class="card-text display-4">{{ $totalNotifications }}</p>
                 </div>
             </div>
         </div>
@@ -57,37 +57,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Contacts Table -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Recent Contacts</h5>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Message</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($recentContacts as $contact)
-                                <tr>
-                                    <td>{{ $contact->name }}</td>
-                                    <td>{{ $contact->email }}</td>
-                                    <td>{{ Str::limit($contact->message, 50) }}</td>
-                                    <td>{{ $contact->created_at->format('Y-m-d') }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Charts Scripts -->
@@ -99,7 +68,7 @@
             labels: @json($userGrowthLabels),
             datasets: [{
                 label: 'User Growth',
-                data: @json($userGrowthData),
+                data: @json($userGrowthValues),
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 2,
                 fill: false,
