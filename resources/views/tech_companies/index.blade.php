@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-dark fw-bold">Company {{ $index }} - {{ ['AI Solutions', 'Cyber Security', 'Cloud Computing', 'Fintech', 'Blockchain', 'E-commerce'][array_rand(['AI Solutions', 'Cyber Security', 'Cloud Computing', 'Fintech', 'Blockchain', 'E-commerce'])] }}</h5>
                     <p class="text-muted">Providing cutting-edge technology services to global markets.</p>
-                    <a href="/profile_page" class="btn btn-primary btn-sm">View Profile</a>
+                    <a href="{{ route('profile.index') }}" class="btn btn-primary btn-sm">View Profile</a>
                 </div>
             </div>
         </div>

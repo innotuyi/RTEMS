@@ -3,7 +3,17 @@
 @section('content')
 <div class="container">
     <h1>Edit User</h1>
-    <form action="{{ route('users.update', $user) }}" method="POST">
+
+        <!-- Display Success Message -->
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    
+    <form action="{{ route('admin.users.update', $user) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">

@@ -12,8 +12,8 @@
     <h1 class="display-4 text-warning fw-bold fade-in">Connect, Compete & Export Your Tech Globally</h1>
     <p class="lead fade-in">Join Rwanda’s top tech companies and expand your reach.</p>
     <div class="mt-4">
-        <a href="/register" class="btn btn-primary btn-lg me-2 fade-in">Register Your Company</a>
-        <a href="/bidding" class="btn btn-outline-light btn-lg fade-in">View Bidding Opportunities</a>
+        <a href="{{ route('register') }}" class="btn btn-primary btn-lg me-2 fade-in">Register Your Company</a>
+        <a href="{{ route('bidding.index') }}" class="btn btn-outline-light btn-lg fade-in">View Bidding Opportunities</a>
     </div>
 </div>
 

@@ -23,20 +23,25 @@
         <div class="sidebar">
             <h2>RTEMS Admin</h2>
             <ul>
-                {{-- <li><a href="{{ route('admin.pages.index') }}"><i class="fas fa-file-alt"></i> Manage Pages</a></li> --}}
-                <li><a href="#"><i class="fas fa-file-alt"></i> Bids Management</a></li>
-                <li><a href="#"><i class="fas fa-users"></i>Applications</a></li>
-                <li><a href="#"><i class="fas fa-building"></i>Regulatory Approvals</a></li>
-                <li><a href="#"><i class="fas fa-building"></i> Manage Companies</a></li>
-                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Manage User</a></li>
-                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Regulatory Approvals</a></li>
-                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Notifications</a></li>
-                <li><a href="#"><i class="fas fa-building"></i> Manage Contact</a></li>
-                <li><a href="#"><i class="fas fa-hand-holding-heart"></i>Logout</a></li>
-
-                {{-- <li><a href="{{ route('analytics') }}"><i class="fas fa-chart-line"></i> View Analytics</a></li> --}}
+                <li><a href="{{ route('admin.users.index') }}"><i class="fas fa-user-cog"></i> Manage Users</a></li>
+                <li><a href="{{ route('admin.companies.index') }}"><i class="fas fa-address-book"></i> Manage companies</a></li>
+                <li><a href="{{ route('admin.bids.index') }}"><i class="fas fa-file-alt"></i> Bids Management  </a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Applications</a></li>
+                <li><a href="#"><i class="fas fa-check-circle"></i> Regulatory Approvals</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="#"><i class="fas fa-address-book"></i> Manage Contacts</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Report Management</a></li>
+                <li>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                    <form id="logout-form" action="#" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </div>
+        
 
         <!-- Main Content -->
         <div class="main-content">

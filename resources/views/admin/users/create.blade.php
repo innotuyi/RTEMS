@@ -3,7 +3,15 @@
 @section('content')
 <div class="container">
     <h1>Create User</h1>
-    <form action="{{ route('users.store') }}" method="POST">
+
+    <!-- Display Success Message -->
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <form action="{{ route('admin.users.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="name">Name</label>

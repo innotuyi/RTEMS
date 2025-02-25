@@ -21,12 +21,12 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             <!-- Edit Button with Icon -->
-                            <a href="{{ route('users.edit', $user) }}" class="btn btn-warning">
-                                <i class="fas fa-edit"></i> <!-- Edit Icon -->
+                            <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a>
+                            <i class="fas fa-edit"></i> <!-- Edit Icon -->
                             </a>
 
                             <!-- Delete Button with Icon -->
-                            <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline">
+                            <form action="{{ route('admin.users.destroy',['id' => $user->id])  }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">

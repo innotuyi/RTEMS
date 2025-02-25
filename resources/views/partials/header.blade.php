@@ -9,10 +9,12 @@
               <li class="nav-item"><a class="nav-link text-light" href="/">Home</a></li>
               <li class="nav-item"><a class="nav-link text-light" href="/about">About Us</a></li>
               {{-- <li class="nav-item"><a class="nav-link text-light" href="/how-it-works">How It Works</a></li> --}}
-              <li class="nav-item"><a class="nav-link text-light" href="/tech-companies">Tech Companies</a></li>
-              <li class="nav-item"><a class="nav-link text-light" href="/bidding">Bidding Opportunities</a></li>
-              <li class="nav-item"><a class="nav-link btn btn-warning text-dark fw-bold px-3" href="/login">Login / Register</a></li>
-          </ul>
+              <li class="nav-item"><a class="nav-link text-light" href="{{ route('tech-companies.index') }}">Tech Companies</a></li>
+              <li class="nav-item"><a class="nav-link text-light" href="{{ route('bidding.index') }}">Bidding Opportunities</a></li>
+              <li class="nav-item">
+                <a class="nav-link btn btn-warning text-dark fw-bold px-3" href="{{ route('login') }}">Login / Register</a>
+            </li>
+                      </ul>
       </div>
   </div>
 </nav>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     // Fetch all products
     public function index()
