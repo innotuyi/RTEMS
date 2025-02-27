@@ -37,7 +37,8 @@
             <label for="role">Role</label>
             <select name="role" id="role" class="form-control">
                 <option value="admin">Admin</option>
-                <option value="user">User</option>
+                <option value="owner">Owner</option>
+                <option value="Regulator">User</option>
             </select>
         </div>
 

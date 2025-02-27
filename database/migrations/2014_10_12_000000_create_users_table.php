@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', ['admin', 'user', 'regulator'])->default('user'); // Added 'regulator' here
+            $table->enum('role', ['admin', 'regulator', 'owner'])->default('owner'); // Added 'regulator' here
             $table->rememberToken();
             $table->timestamps();
         });

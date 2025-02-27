@@ -51,6 +51,21 @@ class CompanyController extends Controller
         return view('companies.edit', compact('company'));
     }
 
+
+    public function show()
+    {
+        $user = Auth()->user();
+        // Fetch the company information associated with the logged-in user using the query builder
+        $company = DB::table('companies')->where('user_id', $user->id)->first();
+
+        // Check if the company exists and the user is the owner
+        if ($company && ($user->role == 'owner' || $company->user_id == $user->id)) {
+            return view('admin.companies.show', compact('company'));
+        }
+
+        // Redirect to dashboard if unauthorized
+        return redirect('/dashboard')->with('error', 'Unauthorized');
+    }
     // Update a company record
     public function update(Request $request, $id)
     {

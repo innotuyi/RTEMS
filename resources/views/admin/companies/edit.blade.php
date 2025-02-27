@@ -56,7 +56,7 @@
 
         <div class="form-group">
             <label for="user_id">Owner (User ID):</label>
-            <input type="text" id="user_id" name="user_id" class="form-control" value="{{ old('user_id', $company->user_id) }}" required>
+            <input type="text" id="user_id" name="user_id" class="form-control" value="{{ old('user_id', $company->user_id) }}" required readonly>
         </div>
 
         <button type="submit" class="btn btn-warning">Update Company</button>

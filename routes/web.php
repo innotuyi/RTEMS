@@ -5,11 +5,14 @@ use App\Http\Controllers\AdminBidController;
 use App\Http\Controllers\AdminCompanyController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BidApplicationController;
+use App\Http\Controllers\BidApplicationsController;
 use App\Http\Controllers\BidController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TechController;
 
@@ -40,6 +43,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('login'); // Delete user
 Route::get('/register', [AuthController::class, 'register'])->name('register'); // Delete user
+Route::post('/register/user', [AuthController::class, 'registerUser'])->name('register.user');
+Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('login.user');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // COMPANIES ROUTES
 Route::prefix('companies')->middleware('auth:sanctum')->group(function () {
@@ -89,22 +95,42 @@ Route::get('/users/create', [UserController::class, 'create'])->name('users.crea
 
 Route::get('/admin/bids', [AdminBidController::class, 'index'])->name('admin.bids.index');
 Route::get('/admin/bids/{id}', [AdminBidController::class, 'show'])->name('admin.bids.show');
-Route::get('/admin/bids/create', [AdminBidController::class, 'create'])->name('admin.bids.create');
+Route::get('/admin/create', [AdminBidController::class, 'create'])->name('admin.create');
 Route::post('/admin/bids', [AdminBidController::class, 'store'])->name('admin.bids.store');
 Route::get('/admin/bids/edit/{id}', [AdminBidController::class, 'edit'])->name('admin.bids.edit');
 Route::put('/admin/bids/{user}', [AdminBidController::class, 'update'])->name('admin.bids.update');
 Route::delete('/admin/bids/{id}', [AdminBidController::class, 'destroy'])->name('admin.bids.destroy');
-Route::get('/bids/create', [AdminBidController::class, 'create'])->name('users.create');
+// Route::get('/bids/create', [AdminBidController::class, 'create'])->name('users.create');
 
 
 
 
 Route::get('/admin/companies', [AdminCompanyController::class, 'index'])->name('admin.companies.index');
-Route::get('/admin/companies/{id}', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
-Route::get('/admin/create/create', [AdminCompanyController::class, 'create'])->name('admin.companies.create');
+// Route::get('/admin/companies/{id}', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
+Route::get('/admin/companies/create', [AdminCompanyController::class, 'create'])->name('admin.companies.create');
 Route::post('/admin/companies', [AdminCompanyController::class, 'store'])->name('admin.companies.store');
 Route::get('/admin/companies/edit/{id}', [AdminCompanyController::class, 'edit'])->name('admin.companies.edit');
 Route::put('/admin/companies/{user}', [AdminCompanyController::class, 'update'])->name('admin.companies.update');
 Route::delete('/admin/companies/{id}', [AdminCompanyController::class, 'destroy'])->name('admin.companies.destroy');
+
+
+
+Route::get('/admin/applications', [BidApplicationController::class, 'index'])->name('admin.applications.index');
+Route::get('/admin/applications/{id}', [BidApplicationController::class, 'show'])->name('admin.applications.show');
+Route::get('/admin/create/create', [BidApplicationController::class, 'create'])->name('admin.applications.create');
+Route::post('/admin/applications', [BidApplicationController::class, 'store'])->name('admin.applications.store');
+Route::get('/admin/applications/edit/{id}', [BidApplicationController::class, 'edit'])->name('admin.applications.edit');
+Route::put('/admin/applications/{user}', [BidApplicationController::class, 'update'])->name('admin.applications.update');
+Route::delete('/admin/applications/{id}', [BidApplicationController::class, 'destroy'])->name('admin.applications.destroy');
+
+
+
+Route::middleware(['role:owner'])->group(function () {
+    Route::get('/admin/mycompany', [CompanyController::class, 'show'])->name('admin.mycompany');
+});
+
+Route::get('/admin/profile', [ProfileController::class, 'show'])->name('admin.profile');
+
+
 
 

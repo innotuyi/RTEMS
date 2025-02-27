@@ -8,7 +8,7 @@
     @endif 
 
 
-    <a href="{{ route('admin.bids.create') }}" class="btn btn-primary mb-3">Create New Bid</a>
+    <a href="{{ route('admin.create') }}" class="btn btn-primary mb-3">Create New Bid</a>
 
     <table class="table table-bordered">
         <thead>

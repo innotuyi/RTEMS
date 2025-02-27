@@ -22,6 +22,11 @@ class AdminBidController extends Controller
         return response()->json($bid);
     }
 
+    public function createForm()
+    {
+        return view('admin.bids.create');
+    }
+
 
     public function create()
     {

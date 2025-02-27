@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
                 'password' => bcrypt('password'), // Default password
-                'role' => $faker->randomElement(['admin', 'user', 'regulator']),
+                'role' => $faker->randomElement(['admin', 'owner', 'regulator']),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -21,27 +21,47 @@
     <div class="dashboard-container">
         <!-- Sidebar -->
         <div class="sidebar">
-            <h2>RTEMS Admin</h2>
+            <h2>
+                RTEMS Admin
+            </h2>
             <ul>
-                <li><a href="{{ route('admin.users.index') }}"><i class="fas fa-user-cog"></i> Manage Users</a></li>
-                <li><a href="{{ route('admin.companies.index') }}"><i class="fas fa-address-book"></i> Manage companies</a></li>
-                <li><a href="{{ route('admin.bids.index') }}"><i class="fas fa-file-alt"></i> Bids Management  </a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Applications</a></li>
-                <li><a href="#"><i class="fas fa-check-circle"></i> Regulatory Approvals</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
-                <li><a href="#"><i class="fas fa-address-book"></i> Manage Contacts</a></li>
-                <li><a href="#"><i class="fas fa-chart-line"></i> Report Management</a></li>
+                <li><a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+
+                @if (auth()->user()->role === 'owner')
+                    <li><a href="{{ route('admin.mycompany') }}"><i class="fas fa-building"></i> My Company</a></li>
+                @endif
+
+                <!-- Manage Users and Companies for Admin -->
+
+                <!-- Bids Management for Admin -->
+                @if (auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.bids.index') }}"><i class="fas fa-file-alt"></i> Bids Management</a>
+                    </li>
+                    <li><a href="{{ route('admin.users.index') }}"><i class="fas fa-user-cog"></i> Manage Users</a></li>
+                    <li><a href="{{ route('admin.companies.index') }}"><i class="fas fa-address-book"></i> Manage
+                            Companies</a></li>
+                @endif
+
+
+                <!-- Report Management for Admin -->
+                @if (auth()->user()->role === 'admin')
+                    <li><a href="{{ route('admin.applications.index') }}"><i class="fas fa-users"></i> Applications</a>
+                    </li>
+
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Report Management</a></li>
+                @endif
+
+                <!-- My Company and Profile for Owner -->
+                @if (auth()->user()->role === 'owner')
+                    <li><a href="{{ route('admin.profile') }}"><i class="fas fa-user"></i> Profile</a></li>
+                @endif
                 <li>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a href="{{ route('logout') }}">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
-                    <form id="logout-form" action="#" method="POST" style="display: none;">
-                        @csrf
-                    </form>
                 </li>
             </ul>
         </div>
-        
 
         <!-- Main Content -->
         <div class="main-content">
@@ -61,23 +81,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const fadeElements = document.querySelectorAll('.fade-in');
-    
+
             function checkInView() {
-                fadeElements.forEach(function (element) {
+                fadeElements.forEach(function(element) {
                     const rect = element.getBoundingClientRect();
                     if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
                         element.classList.add('fade-in-visible');
                     }
                 });
             }
-    
+
             window.addEventListener('scroll', checkInView);
             checkInView(); // Initial check
         });
     </script>
-    
+
 </body>
+
 
 </html>
