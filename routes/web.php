@@ -106,7 +106,7 @@ Route::delete('/admin/bids/{id}', [AdminBidController::class, 'destroy'])->name(
 
 
 Route::get('/admin/companies', [AdminCompanyController::class, 'index'])->name('admin.companies.index');
-// Route::get('/admin/companies/{id}', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
+Route::get('/admin/companies/{id}', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
 Route::get('/admin/companies/create', [AdminCompanyController::class, 'create'])->name('admin.companies.create');
 Route::post('/admin/companies', [AdminCompanyController::class, 'store'])->name('admin.companies.store');
 Route::get('/admin/companies/edit/{id}', [AdminCompanyController::class, 'edit'])->name('admin.companies.edit');

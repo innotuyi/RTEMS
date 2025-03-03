@@ -7,7 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Companies extends Model
 {
-    protected $fillable = ['name', 'address', 'contact_email', 'phone_number', 'user_id'];
-
+    protected $fillable = [
+        'name',
+        'address',
+        'reason',
+        'contact_email',
+        'phone_number',
+        'user_id',
+        'mission',
+        'target',
+        'achievements',
+        'number_of_employees',
+        'education_level',
+        'company_experience',
+        'partners',
+    ];
+    
+    
     use HasFactory;
+
+
+
+    // Company.php
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }

@@ -39,4 +39,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    // User.php
+public function company()
+{
+    return $this->hasOne(Companies::class);
+}
+
 }
