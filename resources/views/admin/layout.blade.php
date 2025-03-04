@@ -27,16 +27,11 @@
             <ul>
                 <li><a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
 
-
-                @if (auth()->user()->role === 'owner')
-    @if (auth()->user()->company)
-        <!-- Show "My Company" if the user already has a company -->
-        <li><a href="{{ route('admin.mycompany') }}"><i class="fas fa-building"></i> My Company</a></li>
-    @else
-        <!-- Show "Create Company" if the user doesn't have a company -->
-        <li><a href="{{ route('admin.companies.create') }}"><i class="fas fa-building"></i> Create Company</a></li>
-    @endif
-@endif
+                    {{-- <li><a href="{{ route('admin.mycompany') }}"><i class="fas fa-building"></i> My Company</a></li> --}}
+                    
+                    <li><a href="{{ route('admin.companies.create') }}"><i class="fas fa-building"></i> Create Company</a></li>
+        
+            
 
 
 

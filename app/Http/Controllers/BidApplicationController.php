@@ -34,6 +34,9 @@ class BidApplicationController extends Controller
     }
     public function create()
     {
+
+
+
         $bids = DB::table('bids')->select('id', 'title')->get();
         $companies = DB::table('companies')->select('id', 'name')->get();
         return view('admin.applications.create', compact('bids', 'companies'));

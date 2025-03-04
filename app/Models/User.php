@@ -47,4 +47,7 @@ public function company()
     return $this->hasOne(Companies::class);
 }
 
+
+
+
 }
