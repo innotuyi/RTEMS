@@ -46,6 +46,17 @@
                     <p><strong>Certificate:</strong> N/A</p>
                 @endif
             </div>
+
+            <div class="col-md-12 mt-4">
+                <h5 class="text-muted">Additional Information</h5>
+                <p><strong>Mission:</strong> {{ $company->mission }}</p>
+                <p><strong>Target:</strong> {{ $company->target }}</p>
+                <p><strong>Achievements:</strong> {{ $company->achievements }}</p>
+                <p><strong>Number of Employees:</strong> {{ $company->number_of_employees }}</p>
+                <p><strong>Education Level:</strong> {{ $company->education_level }}</p>
+                <p><strong>Company Experience:</strong> {{ $company->company_experience }}</p>
+                <p><strong>Partners:</strong> {{ $company->partners }}</p>
+            </div>
         </div>
 
         <hr>

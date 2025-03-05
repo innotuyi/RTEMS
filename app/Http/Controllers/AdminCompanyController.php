@@ -24,6 +24,30 @@ class AdminCompanyController extends Controller
          // Pass the users to the create view
          return view('admin.companies.create', compact('users'));
      }
+
+
+
+
+
+     public function test() {
+
+
+        $users = DB::table('users')->select('id', 'name')->get();
+
+        return view('admin.companies.create', compact('users'));
+         
+    
+    }
+
+
+
+
+
+
+
+
+
+
      
  
      // Store a newly created company

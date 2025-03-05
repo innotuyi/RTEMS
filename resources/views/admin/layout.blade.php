@@ -27,15 +27,9 @@
             <ul>
                 <li><a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
 
-                    {{-- <li><a href="{{ route('admin.mycompany') }}"><i class="fas fa-building"></i> My Company</a></li> --}}
+                    <li><a href="{{ route('admin.mycompany') }}"><i class="fas fa-building"></i> My Company</a></li>
                     
-                    <li><a href="{{ route('admin.companies.create') }}"><i class="fas fa-building"></i> Create Company</a></li>
-        
-            
-
-
-
-
+                    <li><a href="{{ route('test') }}"><i class="fas fa-building"></i> Create Company</a></li>
 
 
 

@@ -11,7 +11,10 @@ class BidController extends Controller
     public function index()
     {
         $bids = DB::table('bids')->get();
-        return view('bidding.index');
+
+
+
+        return view('bidding.index', compact('bids'));
     }
 
     // Show a single bid by ID

@@ -71,7 +71,7 @@ Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.da
 Route::get('/bidding', [BidController::class, 'index'])->name('bidding.index');
 
 
-Route::get('/profile_page', [CompanyController::class, 'profilePage'])->name('profile.index');
+Route::get('/profile_page/{id}', [CompanyController::class, 'profilePage'])->name('profile.index');
 
 Route::get('/tech-companies', [TechController::class, 'index'])->name('tech-companies.index');
 
@@ -106,8 +106,25 @@ Route::delete('/admin/bids/{id}', [AdminBidController::class, 'destroy'])->name(
 
 
 Route::get('/admin/companies', [AdminCompanyController::class, 'index'])->name('admin.companies.index');
-Route::get('/admin/companies/{id}', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
-Route::get('/admin/companies/create', [AdminCompanyController::class, 'create'])->name('test');
+Route::get('/admin/companies/show', [AdminCompanyController::class, 'show'])->name('admin.companies.show');
+
+
+
+
+Route::get('/admin/companies/create', [AdminCompanyController::class, 'create'])->name('admin.companies.create');
+
+
+
+Route::get('/admin/companies/create', [AdminCompanyController::class, 'create'])->name('admin.companies.create');
+
+
+
+Route::get('/test', [AdminCompanyController::class, 'test'])->name('test');
+
+
+
+
+
 Route::post('/admin/companies', [AdminCompanyController::class, 'store'])->name('admin.companies.store');
 Route::get('/admin/companies/edit/{id}', [AdminCompanyController::class, 'edit'])->name('admin.companies.edit');
 Route::put('/admin/companies/{user}', [AdminCompanyController::class, 'update'])->name('admin.companies.update');

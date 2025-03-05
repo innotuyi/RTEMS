@@ -25,5 +25,14 @@ class CompanyController extends Controller
 
         return view('admin.companies.show', compact('company'));
     }
+
+
+    public function profilePage($id) 
+    {
+        $company = DB::table('companies')->where('id', $id)->first();
+
+        
+        return view('profile.index', compact('company'));
+    }
 }
 
