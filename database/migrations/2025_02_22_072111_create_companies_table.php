@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Company name
+            $table->string('service')->nullable(); // Company name
             $table->string('email')->unique(); // Company email
             $table->string('phone')->nullable(); // Contact number
             $table->string('website')->nullable(); // URL (Nullable)

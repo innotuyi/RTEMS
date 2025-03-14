@@ -129,6 +129,7 @@ class AdminCompanyController extends Controller
             'address' => 'required|string',
             'registration_certificate' => 'nullable|file|mimes:pdf|max:2048',
             'mission' => 'nullable|string',
+            'service' => 'nullable|string',
             'target' => 'nullable|string',
             'achievements' => 'nullable|string',
             'number_of_employees' => 'nullable|integer|min:0',

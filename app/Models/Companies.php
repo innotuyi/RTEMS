@@ -20,6 +20,7 @@ class Companies extends Model
         'number_of_employees',
         'education_level',
         'company_experience',
+        'service',
         'partners',
     ];
     
