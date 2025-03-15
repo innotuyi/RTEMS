@@ -24,7 +24,7 @@
 
                     <h5 class="fw-bold text-dark mt-4">Services</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-check-circle text-success"></i> {{ $company->services ?? 'No services listed.' }}</li>
+                        <li><i class="fas fa-check-circle text-success"></i> {{ $company->service ?? 'No services listed.' }}</li>
                     </ul>
 
                     <h5 class="fw-bold text-dark mt-4">Contact Information</h5>

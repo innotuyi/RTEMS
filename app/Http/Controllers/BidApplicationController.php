@@ -13,17 +13,42 @@ class BidApplicationController extends Controller
         $bidApplications = DB::table('bid_applications')
             ->join('bids', 'bid_applications.bid_id', '=', 'bids.id')
             ->join('companies', 'bid_applications.company_id', '=', 'companies.id')
+            ->join('users', 'companies.user_id', '=', 'users.id') // Join with users to get owner details
             ->select(
                 'bid_applications.*',
                 'bids.title as bid_title',
                 'bids.category as bid_category',
                 'companies.name as company_name',
-                'companies.email as company_email'
+                'companies.email as company_email',
+                'users.name as owner_name', // Owner's name
+                'users.email as owner_email' // Owner's email
             )
             ->get();
-
+    
         return view('admin.applications.index', compact('bidApplications'));
     }
+
+    public function myApplications()
+{
+    $userId = auth()->id(); // Get logged-in user's ID
+
+    $bidApplications = DB::table('bid_applications')
+        ->join('bids', 'bid_applications.bid_id', '=', 'bids.id')
+        ->join('companies', 'bid_applications.company_id', '=', 'companies.id')
+        ->where('companies.user_id', $userId) // Filter by the logged-in company owner
+        ->select(
+            'bid_applications.*',
+            'bids.title as bid_title',
+            'bids.category as bid_category',
+            'companies.name as company_name',
+            'companies.email as company_email'
+        )
+        ->get();
+
+    return view('admin.applications.myapplication', compact('bidApplications'));
+}
+
+    
 
     // Show a single bid application by ID
     public function show($id)
@@ -32,6 +57,9 @@ class BidApplicationController extends Controller
 
         return view('admin.applications.show', compact('bidApplication'));
     }
+
+
+    
     public function create()
     {
 
@@ -41,6 +69,35 @@ class BidApplicationController extends Controller
         $companies = DB::table('companies')->select('id', 'name')->get();
         return view('admin.applications.create', compact('bids', 'companies'));
     }
+
+
+public function createMyApplication()
+{
+
+    $userId = auth()->id(); // Get the logged-in user's ID
+
+    // Get the company of the logged-in user
+    $company = DB::table('companies')
+        ->where('user_id', $userId)
+        ->select('id', 'name')
+        ->first(); // Retrieve only one company
+
+    if (!$company) {
+        return redirect()->back()->with('error', 'You do not have a registered company.');
+    }
+
+    $bids = DB::table('bids')->select('id', 'title')->get();
+
+    return view('admin.applications.createMyApplication', compact('bids', 'company'));
+}
+
+
+
+
+
+
+
+
 
     public function edit($id)
     {

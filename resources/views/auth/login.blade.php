@@ -18,8 +18,6 @@
             @endif
 
             <form method="POST" action="{{ route('login.user') }}">
-
-                
                 @csrf <!-- CSRF Protection -->
 
                 {{-- Email --}}
@@ -40,6 +38,11 @@
                     @error('password')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                    {{-- Forgot Password Link --}}
+                    <a href="{{ route('password.request') }}" class="text-decoration-none">Forgot Password?</a>
                 </div>
 
                 {{-- Submit Button --}}

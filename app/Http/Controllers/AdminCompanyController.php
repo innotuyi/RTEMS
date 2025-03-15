@@ -82,6 +82,7 @@ class AdminCompanyController extends Controller
     
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
+            'service' => 'nullable|string|max:255',
             'email' => 'required|email|unique:companies,email',
             'phone' => 'nullable|string|max:20',
             'website' => 'nullable|url',
@@ -120,7 +121,8 @@ class AdminCompanyController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
+        // Validate input using Validator
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:companies,email,' . $id,
             'phone' => 'nullable|string|max:20',
@@ -136,23 +138,31 @@ class AdminCompanyController extends Controller
             'education_level' => 'nullable|string|max:255',
             'company_experience' => 'nullable|integer|min:0',
             'partners' => 'nullable|string',
-            'company_type' => 'required|in:Private,Public,NGO,Other',
-            'company_category' => 'required|in:Startup,SME,Enterprise',
+            // 'company_type' => 'required|in:Private,Public,NGO,Other',
+            // 'company_category' => 'required|in:Startup,SME,Enterprise',
             'status' => 'required|in:pending,approved,rejected',
-            'reason' => 'nullable|string|required_if:status,rejected',
-            'user_id' => 'required|exists:users,id',
+            'reason' => 'nullable|string|sometimes|required_if:status,rejected',
+            // 'user_id' => 'required|exists:users,id',
         ]);
+
+    
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        $data = $validator->validated();
     
         // Handle file upload
         if ($request->hasFile('registration_certificate')) {
             $data['registration_certificate'] = $request->file('registration_certificate')->store('certificates', 'public');
         }
     
+        // Update the company
         DB::table('companies')->where('id', $id)->update($data);
     
         return redirect()->route('admin.companies.index')->with('success', 'Company updated successfully.');
     }
-    
  
      // Show the form for editing a company
      public function edit($id)

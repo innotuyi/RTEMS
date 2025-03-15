@@ -45,9 +45,16 @@
                 @endif
 
 
-                <!-- Report Management for Admin -->
-                @if (auth()->user()->role === 'admin')
-                    <li><a href="{{ route('admin.applications.index') }}"><i class="fas fa-users"></i> Applications</a>
+                     <!-- Bids Management for Admin -->
+                     @if (auth()->user()->role === 'admin')
+                     <li><a href="{{ route('admin.applications.index') }}"><i class="fas fa-users"></i> Applications</a>
+
+                 @endif
+
+
+                <!-- my application -->
+                @if (auth()->user()->role === 'owner')
+                    <li><a href="{{ route('admin.applications.my_applications') }}"><i class="fas fa-users"></i>MY Application</a>
                     </li>
 
                     <li><a href="#"><i class="fas fa-chart-line"></i> Report Management</a></li>

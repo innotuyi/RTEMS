@@ -63,6 +63,12 @@
                 <textarea id="achievements" name="achievements" class="form-control">{{ old('achievements', $company->achievements) }}</textarea>
             </div>
 
+            
+            <div class="form-group">
+                <label for="achievements">Services:</label>
+                <textarea id="service" name="service" class="form-control">{{ old('service', $company->service) }}</textarea>
+            </div>
+
             <div class="form-group">
                 <label for="number_of_employees">Number of Employees:</label>
                 <input type="number" id="number_of_employees" name="number_of_employees" class="form-control" value="{{ old('number_of_employees', $company->number_of_employees) }}">

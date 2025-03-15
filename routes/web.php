@@ -11,6 +11,7 @@ use App\Http\Controllers\BidController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
@@ -133,8 +134,14 @@ Route::delete('/admin/companies/{id}', [AdminCompanyController::class, 'destroy'
 
 
 Route::get('/admin/applications', [BidApplicationController::class, 'index'])->name('admin.applications.index');
+Route::get('/admin/applications/my-applications', [BidApplicationController::class, 'myApplications'])->name('admin.applications.my_applications');
 Route::get('/admin/applications/{id}', [BidApplicationController::class, 'show'])->name('admin.applications.show');
 Route::get('/admin/create/create', [BidApplicationController::class, 'create'])->name('admin.applications.create');
+
+Route::get('/testo',  [BidApplicationController::class, 'createMyApplication'])->name('testo');
+
+
+
 Route::post('/admin/applications', [BidApplicationController::class, 'store'])->name('admin.applications.store');
 Route::get('/admin/applications/edit/{id}', [BidApplicationController::class, 'edit'])->name('admin.applications.edit');
 Route::put('/admin/applications/{user}', [BidApplicationController::class, 'update'])->name('admin.applications.update');
@@ -151,3 +158,9 @@ Route::get('/admin/profile', [ProfileController::class, 'show'])->name('admin.pr
 
 
 
+
+
+Route::get('forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [PasswordResetController::class, 'sendResetLink'])->name('password.email');
+
+Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');

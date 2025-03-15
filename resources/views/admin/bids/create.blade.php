@@ -2,74 +2,67 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="card shadow-lg rounded-4 p-4">
+    <div class="card shadow-lg border-0 rounded-4 p-5">
+        <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-primary fw-bold">{{ $company->name }}</h2>
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+            <h2 class="text-primary fw-bold">Create New Bid</h2>
+            <a href="{{ route('admin.bids.index') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i> Back to Bids List
+            </a>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-6">
-                <h5 class="text-muted">Company Information</h5>
-                <p><strong>Email:</strong> {{ $company->email }}</p>
-                <p><strong>Phone:</strong> {{ $company->phone ?? 'N/A' }}</p>
-                <p><strong>Website:</strong> 
-                    @if($company->website)
-                        <a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a>
-                    @else
-                        N/A
-                    @endif
-                </p>
-                <p><strong>Industry:</strong> {{ $company->industry }}</p>
-                <p><strong>Status:</strong> 
-                    <span class="badge 
-                        @if($company->status == 'approved') bg-success
-                        @elseif($company->status == 'pending') bg-warning
-                        @else bg-danger @endif">
-                        {{ ucfirst($company->status) }}
-                    </span>
-                </p>
+        <!-- Form -->
+        <form action="{{ route('admin.bids.store') }}" method="POST">
+            @csrf
+
+            <div class="row g-4 row-cols-1 row-cols-md-2">
+                <!-- Bid Title -->
+                <div class="col">
+                    <label for="title" class="form-label fw-semibold text-muted">Bid Title</label>
+                    <input type="text" name="title" id="title" class="form-control shadow-sm rounded-3" placeholder="Enter bid title" required>
+                </div>
+
+                <!-- Description -->
+                <div class="col">
+                    <label for="description" class="form-label fw-semibold text-muted">Description</label>
+                    <textarea name="description" id="description" rows="3" class="form-control shadow-sm rounded-3" placeholder="Enter bid requirements" required></textarea>
+                </div>
+
+                <!-- Category -->
+                <div class="col">
+                    <label for="category" class="form-label fw-semibold text-muted">Category</label>
+                    <select name="category" id="category" class="form-select shadow-sm rounded-3" required>
+                        <option selected disabled>-- Select Category --</option>
+                        <option value="software">Software</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="consulting">Consulting</option>
+                    </select>
+                </div>
+
+                <!-- Deadline -->
+                <div class="col">
+                    <label for="deadline" class="form-label fw-semibold text-muted">Deadline</label>
+                    <input type="date" name="deadline" id="deadline" class="form-control shadow-sm rounded-3" required>
+                </div>
+
+                <!-- Status -->
+                <div class="col">
+                    <label for="status" class="form-label fw-semibold text-muted">Status</label>
+                    <select name="status" id="status" class="form-select shadow-sm rounded-3" required>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                        <option value="awarded">Awarded</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="col-md-6">
-                <h5 class="text-muted">Address & Certificate</h5>
-                <p><strong>Address:</strong> {{ $company->address }}</p>
-
-                @if($company->registration_certificate)
-                    <p>
-                        <strong>Certificate:</strong> 
-                        <a href="{{ asset('storage/' . $company->registration_certificate) }}" target="_blank" class="btn btn-primary btn-sm">
-                            View Certificate
-                        </a>
-                    </p>
-                @else
-                    <p><strong>Certificate:</strong> N/A</p>
-                @endif
+            <!-- Submit Button -->
+            <div class="mt-5 text-end">
+                <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold shadow-sm">
+                    <i class="fas fa-check-circle me-2"></i> Create Bid
+                </button>
             </div>
-
-            <div class="col-md-12 mt-4">
-                <h5 class="text-muted">Additional Information</h5>
-                <p><strong>Mission:</strong> {{ $company->mission }}</p>
-                <p><strong>Target:</strong> {{ $company->target }}</p>
-                <p><strong>Achievements:</strong> {{ $company->achievements }}</p>
-                <p><strong>Number of Employees:</strong> {{ $company->number_of_employees }}</p>
-                <p><strong>Education Level:</strong> {{ $company->education_level }}</p>
-                <p><strong>Company Experience:</strong> {{ $company->company_experience }}</p>
-                <p><strong>Partners:</strong> {{ $company->partners }}</p>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="mt-4">
-            <a href="{{ route('admin.companies.edit', $company->id) }}" class="btn btn-primary me-2">Edit Company</a>
-            
-            <form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this company?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete Company</button>
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 @endsection
