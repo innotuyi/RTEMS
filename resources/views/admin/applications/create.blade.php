@@ -4,6 +4,30 @@
 <div class="container">
     <h2>Create Bid Application</h2>
 
+    <!-- Display Validation Errors -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <!-- Display Session Error Messages -->
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <form action="{{ route('admin.applications.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -13,7 +37,7 @@
             <select name="bid_id" id="bid_id" class="form-control" required>
                 <option value="">Choose a Bid</option>
                 @foreach($bids as $bid)
-                    <option value="{{ $bid->id }}">{{ $bid->title }}</option>
+                    <option value="{{ $bid->id }}" {{ old('bid_id') == $bid->id ? 'selected' : '' }}>{{ $bid->title }}</option>
                 @endforeach
             </select>
         </div>
@@ -24,7 +48,7 @@
             <select name="company_id" id="company_id" class="form-control" required>
                 <option value="">Choose a Company</option>
                 @foreach($companies as $company)
-                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                    <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>{{ $company->name }}</option>
                 @endforeach
             </select>
         </div>
@@ -39,9 +63,9 @@
         <div class="form-group">
             <label for="status">Status:</label>
             <select name="status" id="status" class="form-control" required>
-                <option value="pending">Pending</option>
-                <option value="approved">Approved</option>
-                <option value="rejected">Rejected</option>
+                <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="approved" {{ old('status') == 'approved' ? 'selected' : '' }}>Approved</option>
+                <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
             </select>
         </div>
 

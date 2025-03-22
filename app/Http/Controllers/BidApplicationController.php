@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class BidApplicationController extends Controller
 {
@@ -109,31 +110,49 @@ public function createMyApplication()
     
     public function store(Request $request)
     {
-        // Validate input and ensure proposal_file is a PDF
-        $request->validate([
-            'bid_id' => 'required|exists:bids,id',
-            'company_id' => 'required|exists:companies,id',
-            'proposal_file' => 'required|file|mimes:pdf|max:5120', // Only PDF, max 5MB
-            'status' => 'required|in:pending,approved,rejected',
-        ]);
-    
+
+  // Use Validator instead of $request->validate()
+    $validator = Validator::make($request->all(), [
+        'bid_id' => 'required|exists:bids,id',
+        'company_id' => 'required|exists:companies,id',
+        'proposal_file' => 'required|file|mimes:pdf|max:5120', // Only PDF, max 5MB
+    ]);
+
+
+    // Check if validation fails
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+
+
+    try {
+        DB::beginTransaction();
+
         // Handle the file upload
+        $proposalPath = null;
         if ($request->hasFile('proposal_file')) {
             $proposalPath = $request->file('proposal_file')->store('public/proposals');
             $proposalPath = str_replace('public/', 'storage/', $proposalPath);
         }
-    
+
         // Insert bid application data
         DB::table('bid_applications')->insert([
             'bid_id' => $request->bid_id,
             'company_id' => $request->company_id,
-            'proposal_file' => $proposalPath ?? null,
-            'status' => $request->status,
+            'proposal_file' => $proposalPath,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-    
+
+        DB::commit();
+
         return redirect()->route('admin.applications.index')->with('success', 'Bid Application created successfully.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return back()->with('error', 'An error occurred while processing the bid application.');
+    }
+        
     }
     
 
