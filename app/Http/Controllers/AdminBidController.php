@@ -99,7 +99,7 @@ class AdminBidController extends Controller
         'title' => 'required|string|max:255',
         'description' => 'required|string',
         'category' => 'required|in:software,hardware,consulting,construction,services',
-        'deadline' => 'required|date|after:today',
+        // 'deadline' => '|date|after:today',
         'status' => 'required|in:open,closed,awarded',
         'budget' => 'nullable|numeric|min:0',
         'currency' => 'required|string|max:3',

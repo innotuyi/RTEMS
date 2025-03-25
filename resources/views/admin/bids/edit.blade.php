@@ -47,7 +47,7 @@
         <!-- Deadline -->
         <div class="form-group">
             <label for="deadline">Deadline</label>
-            <input type="date" name="deadline" id="deadline" class="form-control" value="{{ $bid->deadline }}" required>
+            <input type="date" name="deadline" id="deadline" class="form-control" value="{{ $bid->deadline }}" >
         </div>
 
         <!-- Status -->
