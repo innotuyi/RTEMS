@@ -29,6 +29,12 @@
                         {{ ucfirst($company->status) }}
                     </span>
                 </p>
+                
+                <!-- Display Reason if it exists -->
+                @if($company->reason)
+                    <p><strong>Reason:</strong> {{ $company->reason }}</p>
+                @endif
+                
             </div>
 
             <div class="col-md-6">
