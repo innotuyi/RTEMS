@@ -51,6 +51,30 @@
             </select>
         </div>
 
+<!-- Status -->
+<div class="form-group">
+    <label for="status">Status:</label>
+    <select name="status" id="status" class="form-control" required onchange="toggleReasonField()">
+        <option value="pending" {{ $application->status == 'pending' ? 'selected' : '' }}>Pending</option>
+        <option value="approved" {{ $application->status == 'approved' ? 'selected' : '' }}>Approved</option>
+        <option value="rejected" {{ $application->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+    </select>
+</div>
+
+<!-- Reason (only if rejected) -->
+<div class="form-group" id="reason-field" style="display: {{ $application->status == 'rejected' ? 'block' : 'none' }};">
+    <label for="reason">Reason for Rejection:</label>
+    <textarea name="reason" id="reason" class="form-control">{{ old('reason', $application->reason) }}</textarea>
+</div>
+
+
+<!-- Reason (only if rejected) -->
+<div class="form-group" id="reason-field" style="display: {{ $application->status == 'rejected' ? 'block' : 'none' }};">
+    <label for="reason">Reason for Rejection:</label>
+    <textarea name="reason" id="reason" class="form-control">{{ old('reason', $application->reason) }}</textarea>
+</div>
+
+
         <button type="submit" class="btn btn-primary">Update Application</button>
     </form>
 </div>

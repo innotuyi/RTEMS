@@ -33,6 +33,7 @@
                     <td>{{ $application->owner_email }}</td>
                     <td>
                         <a href="{{ asset($application->proposal_file) }}" target="_blank">View Proposal</a>
+
                     </td>
                     <td>{{ ucfirst($application->status) }}</td>
                     <td>

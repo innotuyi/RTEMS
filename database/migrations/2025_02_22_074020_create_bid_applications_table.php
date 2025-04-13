@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('company_id')->constrained()->onDelete('cascade'); // Foreign key to companies
             $table->string('proposal_file'); // Path to uploaded proposal
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending'); // Enum for application status
+            $table->string('reason')->nullable(); // Reason for rejection (nullable)
+
             $table->timestamps(); // Timestamps for created_at and updated_at
         });
     }

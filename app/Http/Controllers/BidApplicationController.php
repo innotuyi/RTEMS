@@ -159,12 +159,32 @@ public function createMyApplication()
     // Update a bid application by ID
     public function update(Request $request, $id)
     {
-        $data = $request->only(['bid_id', 'company_id', 'proposal_file', 'status']);
+        $validated = $request->validate([
+            'bid_id' => 'required|exists:bids,id',
+            'company_id' => 'required|exists:companies,id',
+            'status' => 'required|in:pending,approved,rejected',
+            'reason' => 'nullable|string|max:1000',
+        ]);
+    
+        $data = [
+            'bid_id' => $validated['bid_id'],
+            'company_id' => $validated['company_id'],
+            'status' => $validated['status'],
+            'updated_at' => now()
+        ];
+    
+        // Only save reason if rejected
+        if ($validated['status'] === 'rejected') {
+            $data['reason'] = $validated['reason'];
+        } else {
+            $data['reason'] = null; // Clear reason if status is not rejected
+        }
+    
         DB::table('bid_applications')->where('id', $id)->update($data);
-
+    
         return redirect()->route('admin.applications.index')->with('success', 'Bid Application updated successfully.');
     }
-
+    
     // Delete a bid application by ID
     public function destroy($id)
     {
