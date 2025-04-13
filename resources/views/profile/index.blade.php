@@ -14,7 +14,7 @@
 
                 <!-- Company Info -->
                 <div class="col-md-8">
-                    <h4 class="fw-bold text-dark">About Us</h4>
+                    {{-- <h4 class="fw-bold text-dark">About Us</h4> --}}
                     <p class="text-muted">
                         {{ $company->description ?? 'No description available.' }}
                     </p>

@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="address">Services:</label>
                     <textarea id="service" name="service" class="form-control" required>{{ old('service') }}</textarea>
-                    @error('service')<small class="text-danger">{{ $service }}</small>@enderror
+                    @error('service')<small class="text-danger">{{ $message }}</small>@enderror
                 </div>
 
                 <div class="form-group">
